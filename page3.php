@@ -50,20 +50,39 @@
     ?>
 
     <form action="page4.php" method="post">
-        <div class="question-box">
-            <div class="checkbox-group">
-                <label><input type="checkbox" name="choices3[]" value="食品添加物を気にしていない"> 食品添加物を気にしていない</label>
-                <label><input type="checkbox" name="choices3[]" value="菓子パンやケーキ類が好きだ"> 菓子パンやケーキ類が好きだ</label>
-                <label><input type="checkbox" name="choices3[]" value="焼き魚・生魚より焼肉・鶏肉をよく食べる"> 焼き魚・生魚より焼肉・鶏肉をよく食べる</label>
-                <label><input type="checkbox" name="choices3[]" value="頑固な方だと思う"> 頑固な方だと思う</label>
-                <label><input type="checkbox" name="choices3[]" value="少し体調を崩すとすごく落ち込む"> 少し体調を崩すとすごく落ち込む</label>
-                <label><input type="checkbox" name="choices3[]" value="思いついたらすぐ行動する方だ"> 思いついたらすぐ行動する方だ</label>
-                <label><input type="checkbox" name="choices3[]" value="脱力ができない"> 脱力ができない</label>
-                <label><input type="checkbox" name="choices3[]" value="同じ姿勢で過ごすことが多い"> 同じ姿勢で過ごすことが多い</label>
-                <label><input type="checkbox" name="choices3[]" value="あまり風邪を引かない"> あまり風邪を引かない</label>
-                <label><input type="checkbox" name="choices3[]" value="前屈をして手が床につかない"> 前屈をして手が床につかない</label>
-            </div>
-        </div>
+      <div class="question-box">
+    <div class="checkbox-group">
+        <label><input type="checkbox" name="choices3[]" value="食品添加物を気にしていない"
+            <?= in_array('食品添加物を気にしていない', $_POST['choices3'] ?? []) ? 'checked' : '' ?>> 食品添加物を気にしていない</label>
+
+        <label><input type="checkbox" name="choices3[]" value="菓子パンやケーキ類が好きだ"
+            <?= in_array('菓子パンやケーキ類が好きだ', $_POST['choices3'] ?? []) ? 'checked' : '' ?>> 菓子パンやケーキ類が好きだ</label>
+
+        <label><input type="checkbox" name="choices3[]" value="焼き魚・生魚より焼肉・鶏肉をよく食べる"
+            <?= in_array('焼き魚・生魚より焼肉・鶏肉をよく食べる', $_POST['choices3'] ?? []) ? 'checked' : '' ?>> 焼き魚・生魚より焼肉・鶏肉をよく食べる</label>
+
+        <label><input type="checkbox" name="choices3[]" value="頑固な方だと思う"
+            <?= in_array('頑固な方だと思う', $_POST['choices3'] ?? []) ? 'checked' : '' ?>> 頑固な方だと思う</label>
+
+        <label><input type="checkbox" name="choices3[]" value="少し体調を崩すとすごく落ち込む"
+            <?= in_array('少し体調を崩すとすごく落ち込む', $_POST['choices3'] ?? []) ? 'checked' : '' ?>> 少し体調を崩すとすごく落ち込む</label>
+
+        <label><input type="checkbox" name="choices3[]" value="思いついたらすぐ行動する方だ"
+            <?= in_array('思いついたらすぐ行動する方だ', $_POST['choices3'] ?? []) ? 'checked' : '' ?>> 思いついたらすぐ行動する方だ</label>
+
+        <label><input type="checkbox" name="choices3[]" value="脱力ができない"
+            <?= in_array('脱力ができない', $_POST['choices3'] ?? []) ? 'checked' : '' ?>> 脱力ができない</label>
+
+        <label><input type="checkbox" name="choices3[]" value="同じ姿勢で過ごすことが多い"
+            <?= in_array('同じ姿勢で過ごすことが多い', $_POST['choices3'] ?? []) ? 'checked' : '' ?>> 同じ姿勢で過ごすことが多い</label>
+
+        <label><input type="checkbox" name="choices3[]" value="あまり風邪を引かない"
+            <?= in_array('あまり風邪を引かない', $_POST['choices3'] ?? []) ? 'checked' : '' ?>> あまり風邪を引かない</label>
+
+        <label><input type="checkbox" name="choices3[]" value="前屈をして手が床につかない"
+            <?= in_array('前屈をして手が床につかない', $_POST['choices3'] ?? []) ? 'checked' : '' ?>> 前屈をして手が床につかない</label>
+    </div>
+</div>
 
         <!-- hidden：個人情報 -->
         <input type="hidden" name="name" value="<?= $name ?>">

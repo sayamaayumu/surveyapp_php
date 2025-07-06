@@ -24,6 +24,11 @@
             font-size: 1em;
             border-radius: 4px;
         }
+
+    input, select, textarea {
+    font-size: 16px;
+}
+   
     </style>
 </head>
 <body>
@@ -45,8 +50,16 @@
     <form action="<?= $isBackFromConfirm ? 'confirm.php' : 'page1.php' ?>" method="post">
         <div class="form-box">
             <div class="form-group">
-                <label for="name">お名前</label>
-                <input type="text" name="name" id="name" value="<?= $name ?>" required>
+                <label for="name">お名前(カタカナ)</label>
+         <input
+  type="text"
+  name="name"
+  id="name"
+  value="<?= isset($name) ? htmlspecialchars($name, ENT_QUOTES) : '' ?>"
+  pattern="^[ァ-ヴー\s]+$"
+  title="全角カタカナで入力してください"
+  required
+>
             </div>
             <div class="form-group">
                 <label for="email">メールアドレス</label>
@@ -84,3 +97,28 @@
     </form>
 </body>
 </html>
+
+<script>
+let isComposing = false;
+
+document.getElementById("name").addEventListener("compositionstart", () => {
+  isComposing = true;
+});
+
+document.getElementById("name").addEventListener("compositionend", (e) => {
+  isComposing = false;
+  toKatakana(e.target);
+});
+
+document.getElementById("name").addEventListener("input", (e) => {
+  if (!isComposing) {
+    toKatakana(e.target);
+  }
+});
+
+function toKatakana(el) {
+  el.value = el.value.replace(/[\u3041-\u3096]/g, function(ch) {
+    return String.fromCharCode(ch.charCodeAt(0) + 0x60);
+  });
+}
+</script>
