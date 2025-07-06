@@ -1,9 +1,9 @@
 <?php
 // DB接続設定
 $host = 'localhost';
-$db = 'surveyapp';
-$user = 'root';
-$pass = '';
+$db = 'migal_surveyapp';
+$user = 'migal_surveyuser';
+$pass = 'yayoi0107';
 $charset = 'utf8mb4';
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
@@ -83,9 +83,9 @@ try {
             <tbody>
                 <?php foreach ($responses as $res): ?>
                     <tr onclick="window.location.href='admin_detail.php?id=<?= $res['id'] ?>'">
-                        <td><?= htmlspecialchars($res['name']) ?></td>
-                        <td><?= htmlspecialchars($res['email']) ?></td>
-                        <td><?= htmlspecialchars($res['birthdate']) ?></td>
+                        <td><?= htmlspecialchars($res['name'] ?? '') ?></td>
+                        <td><?= htmlspecialchars($res['email'] ?? '') ?></td>
+                        <td><?= htmlspecialchars($res['birthdate'] ?? '') ?></td>
                         <td><?= isset($res['submitted_at']) && $res['submitted_at'] !== null ? htmlspecialchars($res['submitted_at']) : '' ?></td>
                         <td>
                             <button class="delete-btn" onclick="confirmDelete(event, <?= $res['id'] ?>)">削除</button>

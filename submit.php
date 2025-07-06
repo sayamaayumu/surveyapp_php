@@ -1,10 +1,9 @@
 <?php
 // DB接続情報（変更なし）
-$host = '127.0.0.1';
-$port = '3306';
-$db   = 'surveyapp';
-$user = 'root';
-$pass = '';
+$host = 'localhost';
+$db   = 'migal_surveyapp';
+$user = 'migal_surveyuser';
+$pass = 'yayoi0107';
 $charset = 'utf8mb4';
 
 // エラーメッセージ出す
@@ -51,14 +50,16 @@ $body .= "●メール: {$email}\n";
 $body .= "●生年月日: {$birthdate}\n";
 $body .= "●ご相談内容:\n{$note}\n";
 
-$headers = 'From: Kouyadoufu08292002@gmail.com'; // 任意（必要に応じて変更）
+$from = 'Kouyadoufu08292002@gmail.com';
+$headers = "From: {$from}"; // 任意（必要に応じて変更）
+$additional_parameters = "-f {$from}";
 
 // 日本語メールを使う設定
 mb_language("Japanese");
 mb_internal_encoding("UTF-8");
 
 // メール送信（エラーハンドリングは省略）
-$success = mb_send_mail($to, $subject, $body, $headers);
+$success = mb_send_mail($to, $subject, $body, $headers, $additional_parameters);
 if ($success) {
     echo "メール送信成功";
 }else{

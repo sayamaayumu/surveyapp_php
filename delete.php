@@ -4,9 +4,9 @@ if (!isset($_GET['id'])) {
 }
 
 $host = 'localhost';
-$db = 'surveyapp';
-$user = 'root';
-$pass = '';
+$db = 'migal_surveyapp';
+$user = 'migal_surveyuser';
+$pass = 'yayoi0107';
 $charset = 'utf8mb4';
 
 try {
