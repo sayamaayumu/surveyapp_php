@@ -64,19 +64,42 @@ $choices5 = $_POST['choices5'] ?? [];
             justify-content: space-between;
             margin-top: 2em;
         }
-        .btn {
-            flex: 1;
-            padding: 0.8em 0;
-            border: none;
-            border-radius: 8px;
-            font-size: 1em;
-            color: #fff;
-            cursor: pointer;
-            margin: 0 0.3em;
-        }
-        .btn-back { background-color: #ccc; color: #000; }
-        .btn-edit { background-color: #28a745; }
-        .btn-submit { background-color: #d63384; }
+  
+.buttons {
+  display: flex;
+  justify-content: center;
+  flex-wrap: nowrap;  /* 改行させない */
+  gap: 12px;           /* ボタン間の余白 */
+  margin-top: 20px;
+}
+
+.btn {
+  padding: 14px 24px;
+  font-size: 16px;
+  border-radius: 8px;
+  min-width: 90px;
+  text-align: center;
+  white-space: nowrap;  /* 文字の折り返し防止 */
+}
+
+.btn-back {
+  background-color: #ccc;
+  color: #000;
+  border: none;
+}
+
+.btn-edit {
+  background-color: #4CAF50;
+  color: #fff;
+  border: none;
+}
+
+.btn-submit {
+  background-color: #e91e63;
+  color: #fff;
+  border: none;
+}
+
     </style>
 </head>
 <body>
@@ -115,11 +138,29 @@ $choices5 = $_POST['choices5'] ?? [];
             ?>
 
             <div class="buttons">
-                <button type="button" class="btn btn-back" onclick="location.href='page5.php'">戻る</button>
-                <button type="submit" formaction="survey.php" class="btn btn-edit" name="back_from_confirm" value="1">編集する</button>
-                <button type="submit" class="btn btn-submit">送信</button>
-            </div>
-        </div>
-    </form>
+                
+ <div class="buttons">
+  <form method="post">
+    <!-- hidden: 個人情報 -->
+    <input type="hidden" name="name" value="<?= htmlspecialchars($name, ENT_QUOTES) ?>">
+    <input type="hidden" name="email" value="<?= htmlspecialchars($email, ENT_QUOTES) ?>">
+    <input type="hidden" name="birthdate" value="<?= htmlspecialchars($birthdate, ENT_QUOTES) ?>">
+    <input type="hidden" name="note" value="<?= htmlspecialchars($note, ENT_QUOTES) ?>">
+
+    <?php
+      hidden_array('choices1', $choices1);
+      hidden_array('choices2', $choices2);
+      hidden_array('choices3', $choices3);
+      hidden_array('choices4', $choices4);
+      hidden_array('choices5', $choices5);
+    ?>
+
+    <!-- ボタン類 -->
+    <button type="submit" formaction="page5.php" class="btn btn-back">戻る</button>
+    <button type="submit" formaction="survey.php" class="btn btn-edit" name="back_from_confirm" value="1">編集する</button>
+    <button type="submit" formaction="submit.php" class="btn btn-submit">送信</button>
+  </form>
+</div>
+
 </body>
 </html>

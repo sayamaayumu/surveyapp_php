@@ -34,6 +34,7 @@
 <body>
     <h2>アンケート - 基本情報の入力</h2>
 
+
     <?php
     function esc($v) {
         return htmlspecialchars($v ?? '', ENT_QUOTES, 'UTF-8');
@@ -59,6 +60,7 @@
   pattern="^[ァ-ヴー\s]+$"
   title="全角カタカナで入力してください"
   required
+  
 >
             </div>
             <div class="form-group">

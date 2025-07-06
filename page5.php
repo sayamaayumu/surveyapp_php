@@ -48,6 +48,7 @@
     $choices2 = $_POST['choices2'] ?? [];
     $choices3 = $_POST['choices3'] ?? [];
     $choices4 = $_POST['choices4'] ?? [];
+    $choices5 = $_POST['choices5'] ?? [];
     ?>
 
     <form action="confirm.php" method="post">
@@ -84,6 +85,21 @@
             <?= in_array('よく下半身がむくむ', $_POST['choices5'] ?? []) ? 'checked' : '' ?>> よく下半身がむくむ</label>
     </div>
 </div>
+
+
+<?php
+// POSTで戻ってきたデータを受け取る
+$name = $_POST['name'] ?? '';
+$email = $_POST['email'] ?? '';
+$birthdate = $_POST['birthdate'] ?? '';
+$note = $_POST['note'] ?? '';
+$choices1 = $_POST['choices1'] ?? [];
+$choices2 = $_POST['choices2'] ?? [];
+$choices3 = $_POST['choices3'] ?? [];
+$choices4 = $_POST['choices4'] ?? [];
+$choices5 = $_POST['choices5'] ?? [];
+?>
+
         <!-- hidden：個人情報 -->
         <input type="hidden" name="name" value="<?= $name ?>">
         <input type="hidden" name="email" value="<?= $email ?>">
@@ -96,12 +112,13 @@
             hidden_array('choices2', $choices2);
             hidden_array('choices3', $choices3);
             hidden_array('choices4', $choices4);
+            hidden_array('choices5', $choices5);
         ?>
 
         <div class="button-area">
-            <button type="button" class="btn-back" onclick="location.href='page4.php'">戻る</button>
-            <button type="submit" class="btn-next">確認画面へ</button>
-        </div>
+  <button type="submit" formaction="page4.php" class="btn-back">戻る</button>
+  <button type="submit" class="btn-next">確認画面へ</button>
+</div>
     </form>
 </body>
 </html>

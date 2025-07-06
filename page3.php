@@ -47,6 +47,9 @@
     // 過去の選択肢
     $choices1 = $_POST['choices1'] ?? [];
     $choices2 = $_POST['choices2'] ?? [];
+    $choices3 = $_POST['choices3'] ?? [];
+    $choices4 = $_POST['choices4'] ?? [];
+    $choices5 = $_POST['choices5'] ?? [];
     ?>
 
     <form action="page4.php" method="post">
@@ -94,12 +97,15 @@
         <?php
             hidden_array('choices1', $choices1);
             hidden_array('choices2', $choices2);
+            hidden_array('choices3', $choices3);
+            hidden_array('choices4', $choices4);
+            hidden_array('choices5', $choices5);
         ?>
 
         <div class="button-area">
-            <button type="button" class="btn-back" onclick="location.href='page2.php'">戻る</button>
-            <button type="submit" class="btn-next">次へ</button>
-        </div>
+    <button type="button" onclick="location.href='page2.php'" class="btn-back">戻る</button>
+    <button type="submit" class="btn-next">次へ</button>
+</div>
     </form>
 </body>
 </html>
